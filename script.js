@@ -1,6 +1,22 @@
 function processJSON(input) {
+    let tabIndex = 0;
+    
+    let formatted = input.replace(/\{/g, '{\n')
+                         .replace(/\[/g, '[\n')
+                         .replace(/,/g, ',\n')
+                         .replace(/\}/g, '\n}')
+                         .replace(/\]/g, '\n]');
 
-    return input; 
+    let json = '';
+    const lines = formatted.split('\n');
+    lines.forEach((line) => {
+        if (line.includes('}') || line.includes(']')) tabIndex--;
+        json += '   '.repeat(tabIndex) + line + '\n';
+    
+        if (line.includes('{') || line.includes('[')) tabIndex++;
+    });
+
+    return json; 
 }
 
 document.getElementById('beautify-btn').addEventListener('click', () => {
