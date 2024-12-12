@@ -3,27 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Beautify</title>
+    <title>JSON Simple Tools</title>
     <link rel="stylesheet" href="home.css">
     <link rel="icon" href="brackets-curly.svg" type="image/svg">
 </head>
 <body>
     <header>
-        <h1>JSON Beautify</h1>
+        <h1>JSON Simple Tools</h1>
+        <nav>
+            <button id="beautify-tab" class="tab-btn active">Beautify</button>
+            <button id="compare-tab" class="tab-btn">Compare</button>
+        </nav>
     </header>
     <main>
-        <div class="buttons">
-            <button id="beautify-btn">Beautify</button>
-            <button id="clear-btn">Clear</button>
-        </div>
-        <div class="editor">
-            <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
-            <textarea id="json-output" placeholder="Your beautified JSON will appear here..." readonly></textarea>
-        </div>
+        <!-- Beautify Screen -->
+        <section id="beautify-screen" class="screen">
+            <div class="buttons">
+                <button id="beautify-btn">Beautify</button>
+                <button id="clear-beautify-btn">Clear</button>
+            </div>
+            <div class="editor">
+                <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                <textarea id="json-output" placeholder="Your beautified JSON will appear here..." readonly></textarea>
+            </div>
+        </section>
+
+        <!-- Compare Screen -->
+        <section id="compare-screen" class="screen hidden">
+            <div class="buttons">
+                <button id="compare-btn">Compare</button>
+            </div>
+            <div class="editor">
+                <textarea id="json-compare-input-1" placeholder="Paste JSON 1 here..."></textarea>
+                <textarea id="json-compare-input-2" placeholder="Paste JSON 2 here..."></textarea>
+            </div>
+        </section>
     </main>
     <footer>
-        <p>&copy; 2024 JSON Beautify. All rights reserved.</p>
+        <p>&copy; 2024 JSON Tools. All rights reserved.</p>
     </footer>
     <script src="script.js"></script>
+    <script src="beautify.js"></script>
+    <script src="compare.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 header {
@@ -19,11 +20,38 @@ header {
     color: #fff;
     padding: 1rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 header h1 {
     font-size: 1.8rem;
     font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #555;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab-btn.active {
+    background-color: #007bff;
+}
+
+.tab-btn:hover {
+    background-color: #0056b3;
 }
 
 main {
@@ -33,6 +61,11 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    width: 100%;
+}
+
+.screen.hidden {
+    display: none;
 }
 
 .buttons {
@@ -51,26 +84,31 @@ button {
     background-color: #007bff;
     color: white;
     transition: background-color 0.3s;
+    flex: 1;
+    max-width: 130px;
+    text-align: center;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-button#clear-btn {
+button#clear-beautify-btn {
     background-color: #dc3545;
 }
 
-button#clear-btn:hover {
+button#clear-beautify-btn:hover {
     background-color: #a71d2a;
 }
 
 .editor {
     display: flex;
     justify-content: space-between;
-    width: 95%;
-    height: 75vh;
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100vh - 300px);
     gap: 1rem;
+    padding: 0 1rem;
 }
 
 textarea {
@@ -80,14 +118,25 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 5px;
     resize: none;
-    height: 90%;
     overflow-y: auto;
+    height: 100%;
 }
 
 textarea:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+section {
+    padding: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.diff {
+    color: red;
 }
 
 footer {

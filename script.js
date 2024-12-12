@@ -1,31 +1,19 @@
-function processJSON(input) {
-    let tabIndex = 0;
-    
-    let formatted = input.replace(/\{/g, '{\n')
-                         .replace(/\[/g, '[\n')
-                         .replace(/,/g, ',\n')
-                         .replace(/\}/g, '\n}')
-                         .replace(/\]/g, '\n]');
+// Tabs switching logic
+const beautifyTab = document.getElementById('beautify-tab');
+const compareTab = document.getElementById('compare-tab');
+const beautifyScreen = document.getElementById('beautify-screen');
+const compareScreen = document.getElementById('compare-screen');
 
-    let json = '';
-    const lines = formatted.split('\n');
-    lines.forEach((line) => {
-        if (line.includes('}') || line.includes(']')) tabIndex--;
-        json += '   '.repeat(tabIndex) + line + '\n';
-    
-        if (line.includes('{') || line.includes('[')) tabIndex++;
-    });
-
-    return json; 
-}
-
-document.getElementById('beautify-btn').addEventListener('click', () => {
-    const input = document.getElementById('json-input').value;
-    const beautified = processJSON(input);
-    document.getElementById('json-output').value = beautified;
+beautifyTab.addEventListener('click', () => {
+    beautifyTab.classList.add('active');
+    compareTab.classList.remove('active');
+    beautifyScreen.classList.remove('hidden');
+    compareScreen.classList.add('hidden');
 });
 
-document.getElementById('clear-btn').addEventListener('click', () => {
-    document.getElementById('json-input').value = '';
-    document.getElementById('json-output').value = '';
+compareTab.addEventListener('click', () => {
+    compareTab.classList.add('active');
+    beautifyTab.classList.remove('active');
+    compareScreen.classList.remove('hidden');
+    beautifyScreen.classList.add('hidden');
 });
